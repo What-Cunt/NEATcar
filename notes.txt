@@ -1,0 +1,16 @@
+#Random shit
+        # monitor1 = {"top": 160, "left": 160, "width": 0, "height": 135}
+        # monitor2 = {"top": 160, "left": 0, "width": 160, "height": 135}
+        # monitor3 = {"top": 0, "left": 160, "width": 160, "height": 135}
+        # output1 = "sct-{top}x{left}_{width}x{height}.png".format(**monitor1)
+        # output2 = "sct-{top}x{left}_{width}x{height}.png".format(**monitor2)
+        # output3 = "sct-{top}x{left}_{width}x{height}.png".format(**monitor3)
+        # sct_img = sct.grab(monitor1)
+        # sct_img = sct.grab(monitor2)
+        # sct_img = sct.grab(monitor3)
+        # mss.tools.to_png(sct_img.rgb, sct_img.size, output=output1)
+        # print(output1)
+        # mss.tools.to_png(sct_img.rgb, sct_img.size, output=output2)
+        # print(output2)
+        # mss.tools.to_png(sct_img.rgb, sct_img.size, output=output3)
+        # print(output3)
