@@ -137,3 +137,6 @@ while carCount > 0:
    r, g, b = img.getpixel((0, 0))
    print("Red: {0}, Green: {1}, Blue: {2}".format(r, g, b))
 '''
+
+
+#testing
