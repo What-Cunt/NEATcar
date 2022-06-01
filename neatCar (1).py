@@ -12,7 +12,9 @@ from PIL import ImageGrab
 import mss
 import mss.tools
 import pyautogui
-
+import hashlib
+import timeit
+#Don't need to pip install timeit and hashlib packages. They're already preinstalled as of python 2.5=>
 
 def carTrack(): # Sets up Car Track
    global filepath, t, img, dArea, gen, num
@@ -97,16 +99,12 @@ def main(): #Function to test the screenshoting of wherever our car is
 def neatGen(): #AI Algorithm
    pass
 
-""""
-def rules(): #When car dies off
-   img = cv2.imread(filepath) #this part just creates a mask over our current track just in case the greyscaling is an issue for rgb or hsv filtering
-   hsv = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-   lower = np.array([0, 50, 50])
-   upper = np.array([130, 255, 255])
-   mask = cv2.inRange(hsv, lower, upper) #Black and white track scaling
-   #cv2.imshow('image', img)
-   cv2.imshow('mask', mask)
-"""
+'''
+def complexityTracker(): #Should check the amount of time each process takes. Temporary function to optimize time or even space complexity.
+    print(timeit.timeit(complexityTracker, number=100))
+    return hashlib.sha256(b'Code profiling').hexdigest()
+''' #Work in progress. https://stackify.com/how-to-optimize-python-code/
+
 
 def genData(): #Keeps track of each car of each Gens' time and distance in nodes
    global carTimes, bestTimes
@@ -117,16 +115,21 @@ def genData(): #Keeps track of each car of each Gens' time and distance in nodes
 if __name__ == "__main__":
    carTrack()
    neatGen()
-   #rules() #tester function kills off car without having to check individual pixels to kill
+   #masking()
    genData()
+   complexityTracker()
    while True:
        main()
 
-'''
-while carCount > 0:
-   r, g, b = img.getpixel((0, 0))
-   print("Red: {0}, Green: {1}, Blue: {2}".format(r, g, b))
-'''
 
 
-#testing
+""""
+def masking(): #When car dies off
+   img = cv2.imread(filepath) #this part just creates a mask over our current track just in case the greyscaling is an issue for rgb or hsv filtering
+   hsv = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+   lower = np.array([0, 50, 50])
+   upper = np.array([130, 255, 255])
+   mask = cv2.inRange(hsv, lower, upper) #Black and white track scaling
+   #cv2.imshow('image', img)
+   cv2.imshow('mask', mask)
+"""
