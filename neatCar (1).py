@@ -18,7 +18,8 @@ import timeit
 
 def carTrack(): # Sets up Car Track
    global filepath, t, img, dArea, gen, num
-   filepath = r"C:\Users\Gumme\OneDrive\Desktop\unknown.png"
+   filepath = os.getenv("FILEPATH") #Set in your path the name as FILEPATH and the value as the directory to the cartrack picture
+   print(filepath)
    t = turtle.Turtle()
    dArea = turtle.Screen()
    turtle.bgpic(filepath)
@@ -117,7 +118,7 @@ if __name__ == "__main__":
    neatGen()
    #masking()
    genData()
-   complexityTracker()
+   #complexityTracker()
    while True:
        main()
 
