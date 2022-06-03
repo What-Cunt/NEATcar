@@ -24,8 +24,7 @@ def carTrack(): # Sets up Car Track
    dArea = turtle.Screen()
    turtle.bgpic(filepath + r"\carTrack.png")
    img = Image.open(filepath + r"\carTrack.png")
-   gen = 1
-   num = 1
+   gen, num = 1, 1
    # get width and height
    width, height = img.size
    # display width and height
@@ -76,7 +75,8 @@ def main(): #Function to test the screenshoting of wherever our car is
                        timedDeath = round(endTime - startTime, 3)
                        #print("Elapsed time is {}".format(timedDeath))
                        carTimes[gen] = timedDeath
-                       print(carTimes)
+                       #print(carTimes)
+                       print(bestTimes)
                        gen += 1
                        t.goto(-400, -200)
                        t.setheading(90)
@@ -90,10 +90,12 @@ def main(): #Function to test the screenshoting of wherever our car is
                            carTimes.clear()
                            num += 1
                            gen = 1
-                           print(bestTimes)
+                           xAxis.append(num)
+                           yAxis.append(highest)
                        break
        im1 = pyautogui.screenshot()
        im2 = pyautogui.screenshot('theCar.png', region=carCoords)  # left, top, width, height
+       genPlotting()
        time.sleep(0.1)
        #print(carCoords)
 
@@ -108,12 +110,17 @@ def complexityTracker(): #Should check the amount of time each process takes. Te
 
 
 def genData(): #Keeps track of each car of each Gens' time and distance in nodes
-   global carTimes, bestTimes
+   global carTimes, bestTimes, xAxis, yAxis
    carCount = 10
    bestTimes = dict() #Best car times from each gen
    carTimes = dict() #Current car times
-   #Next part is solely for graphing plots over time
-
+   xAxis = [] #for plots
+   yAxis = []
+   
+def genPlotting():
+   plt.plot(xAxis, yAxis)
+   plt.title("Gen_Over_Time")
+   plt.savefig("NeatCarPlot.png")
 
 if __name__ == "__main__":
    carTrack()
@@ -123,7 +130,6 @@ if __name__ == "__main__":
    #complexityTracker()
    while True:
        main()
-
 
 
 """"
