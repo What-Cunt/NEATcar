@@ -18,7 +18,7 @@ import timeit
 
 def carTrack(): # Sets up Car Track
    global filepath, t, img, dArea, gen, num
-   filepath = os.getenv("FILEPATH") #Set in your path the name as FILEPATH and the value as the directory to the carPictures folder
+   filepath = os.environ.get("FILEPATH") #Set in your path the name as FILEPATH and the value as the directory to the carPictures folder
    print(filepath)
    t = turtle.Turtle()
    dArea = turtle.Screen()
