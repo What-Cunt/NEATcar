@@ -18,12 +18,12 @@ import timeit
 
 def carTrack(): # Sets up Car Track
    global filepath, t, img, dArea, gen, num
-   filepath = os.getenv("FILEPATH") #Set in your path the name as FILEPATH and the value as the directory to the cartrack picture
+   filepath = os.getenv("FILEPATH") #Set in your path the name as FILEPATH and the value as the directory to the carPictures folder
    print(filepath)
    t = turtle.Turtle()
    dArea = turtle.Screen()
-   turtle.bgpic(filepath)
-   img = Image.open(filepath)
+   turtle.bgpic(filepath + r"\carTrack.png")
+   img = Image.open(filepath + r"\carTrack.png")
    gen = 1
    num = 1
    # get width and height
@@ -61,15 +61,15 @@ def main(): #Function to test the screenshoting of wherever our car is
        dArea.update()
        #Picture taking
        # Takes pictures of car every 0.1 seconds (100 miliseconds is not fast. May ned to use PIL to optimize? Transfer away from pygame to optimize further)
-       carCoords = pyautogui.locateOnScreen(r"C:\Users\Gumme\OneDrive\Desktop\upcar.png", confidence=0.95) #5% alpha- pval < null = surprising. At 100% CL, pixels may change before cars hit it and car will die wrongly
+       carCoords = pyautogui.locateOnScreen(filepath + r"\upcar.png", confidence=0.95) #5% alpha- pval < null = surprising. At 100% CL, pixels may change before cars hit it and car will die wrongly
        if carCoords == None:
-           carCoords = pyautogui.locateOnScreen(r"C:\Users\Gumme\OneDrive\Desktop\leftcar.png", confidence=0.95)
+           carCoords = pyautogui.locateOnScreen(filepath + r"\leftcar.png", confidence=0.95)
            time.sleep(0.1)
            if carCoords == None:
-               carCoords = pyautogui.locateOnScreen(r"C:\Users\Gumme\OneDrive\Desktop\rightcar.png", confidence=0.95)
+               carCoords = pyautogui.locateOnScreen(filepath + r"\rightcar.png", confidence=0.95)
                time.sleep(0.1)
                if carCoords == None:
-                   carCoords = pyautogui.locateOnScreen(r"C:\Users\Gumme\OneDrive\Desktop\downcar.png", confidence=0.95)
+                   carCoords = pyautogui.locateOnScreen(filepath + r"\downcar.png", confidence=0.95)
                    time.sleep(0.1)
                    if carCoords == None: #Kills car and resets it to original position
                        endTime = time.time()
@@ -112,6 +112,8 @@ def genData(): #Keeps track of each car of each Gens' time and distance in nodes
    carCount = 10
    bestTimes = dict() #Best car times from each gen
    carTimes = dict() #Current car times
+   #Next part is solely for graphing plots over time
+
 
 if __name__ == "__main__":
    carTrack()
