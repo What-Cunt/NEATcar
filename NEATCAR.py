@@ -73,10 +73,10 @@ def main(): #Function to test the screenshoting of wherever our car is
                    if carCoords == None: #Kills car and resets it to original position
                        endTime = time.time()
                        timedDeath = round(endTime - startTime, 3)
-                       #print("Elapsed time is {}".format(timedDeath))
+                       #print(f"Elapsed time is {timedDeath}")
                        carTimes[gen] = timedDeath
                        #print(carTimes)
-                       print(bestTimes)
+                       #print(bestTimes)
                        gen += 1
                        t.goto(-400, -200)
                        t.setheading(90)
